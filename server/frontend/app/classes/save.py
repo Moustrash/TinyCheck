@@ -62,7 +62,7 @@ class Save():
                                 io.BytesIO(f.read()),
                                 mimetype="application/octet-stream",
                                 as_attachment=True,
-                                attachment_filename="TinyCheck_{}.zip".format(cd))
+                                download_name="TinyCheck_{}.zip".format(cd))
             except:
                 return jsonify({"status": False,
                                 "message": "Error while saving capture"})

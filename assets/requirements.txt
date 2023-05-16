@@ -5,10 +5,10 @@ pydig
 pymisp
 netaddr
 pyyaml
-flask
+flask==2.2.2
 flask_httpauth
 pyjwt
-sqlalchemy
+sqlalchemy==1.4.42
 psutil
 pyudev
 wifi

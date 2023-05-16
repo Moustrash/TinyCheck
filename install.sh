@@ -139,7 +139,7 @@ Description=TinyCheck frontend service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /usr/share/tinycheck/server/frontend/main.py
+ExecStart=/usr/bin/python3.8 /usr/share/tinycheck/server/frontend/main.py
 Restart=on-abort
 KillMode=process
 
@@ -154,7 +154,7 @@ Description=TinyCheck backend service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /usr/share/tinycheck/server/backend/main.py
+ExecStart=/usr/bin/python3.8 /usr/share/tinycheck/server/backend/main.py
 Restart=on-abort
 KillMode=process
 
@@ -191,7 +191,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /usr/share/tinycheck/server/backend/watchers.py
+ExecStart=/usr/bin/python3.8 /usr/share/tinycheck/server/backend/watchers.py
 Restart=on-abort
 KillMode=process
 
@@ -317,16 +317,16 @@ check_dependencies() {
    # If not installed, call install_package with the package name.
    check_dnsmasq
    bins=("/usr/sbin/hostapd"
-         "/opt/zeek/bin/zeek"
-         "/usr/bin/tshark"
-         "/usr/bin/dig"
-         "/usr/bin/suricata"
-         "/usr/bin/unclutter"
-         "/usr/bin/sqlite3"
-         "/usr/bin/pip"
-      	 "/usr/bin/swig"
-	       "/usr/sbin/dhcpcd"
-	       "/usr/bin/curl")
+        "/opt/zeek/bin/zeek"
+        "/usr/bin/tshark"
+        "/usr/bin/dig"
+        "/usr/bin/suricata"
+        "/usr/bin/unclutter"
+        "/usr/bin/sqlite3"
+        "/usr/bin/pip"
+      	"/usr/bin/swig"
+	    "/usr/sbin/dhcpcd"
+	    "/usr/bin/curl")
 
    echo -e "\e[39m[+] Checking dependencies...\e[39m"
    for bin in "${bins[@]}"
@@ -340,7 +340,7 @@ check_dependencies() {
    done
    install_package node
    echo -e "\e[39m[+] Install Python packages...\e[39m"
-   python3 -m pip install -r "$SCRIPT_PATH/assets/requirements.txt"
+   python3.8 -m pip install -r "$SCRIPT_PATH/assets/requirements.txt"
 }
 
 compile_vuejs() {
@@ -465,7 +465,7 @@ change_configs() {
 
 feeding_iocs() {
     echo -e "\e[39m[+] Feeding your TinyCheck instance with fresh IOCs and whitelist, please wait."
-    python3 /usr/share/tinycheck/server/backend/watchers.py 2>/dev/null
+    python3.8 /usr/share/tinycheck/server/backend/watchers.py 2>/dev/null
 }
 
 reboot_box() {
